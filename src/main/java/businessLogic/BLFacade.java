@@ -41,7 +41,7 @@ public interface BLFacade  {
  	 * @throws QuestionAlreadyExist if the same question already exists for the event
 	 */
 	@WebMethod Question createQuestion(Event event, String question, float betMinimum) throws EventFinished, QuestionAlreadyExist;
-	
+	//froga
 	
 	/**
 	 * This method retrieves the events of a given date 
