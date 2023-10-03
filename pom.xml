@@ -63,6 +63,7 @@
 
 		<sonar.organization>si2bets</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.login>899df92862ccca5d311940397a47c7c86ec13067</sonar.login>
 	</properties>
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
