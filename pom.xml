@@ -40,7 +40,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 				<maven.compiler.target>1.8</maven.compiler.target>
 				<maven.compiler.source>1.8</maven.compiler.source>
 		<sonar.organization>si2bets </sonar.organization>
-				<sonar.host.url>https://sonarcloud.io</sonar.host.url>		
+				<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+				<sonar.login>7d357ae6b3ba489d95134793fa55a2bc92165a89</sonar.login>
 </properties>
 <!-- https://mvnrepository.com/artifact/junit/junit	-->
 <dependencies>
