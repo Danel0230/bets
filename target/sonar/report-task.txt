@@ -1,0 +1,7 @@
+organization=si2bets
+projectKey=upv-ehu-iso2:bets
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.47021
+dashboardUrl=https://sonarcloud.io/dashboard?id=upv-ehu-iso2%3Abets
+ceTaskId=AYr7INfMfPzO8_NpOMjw
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYr7INfMfPzO8_NpOMjw

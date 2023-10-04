@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="CreateQuestionBLBMTest" time="0.633" tests="3" errors="3" skipped="0" failures="0">
+  <properties>
+    <property name="jansi.mode" value="force"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="17.0.8.1+1"/>
+    <property name="sun.boot.library.path" value="C:\Users\inigo\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\inigo\Downloads\betsDanel\bets\bets"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\inigo\Downloads\betsDanel\bets\bets"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="17.0.8.1+1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\inigo\AppData\Local\Temp\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="classworlds.conf" value="C:\Users\inigo\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf10080388959113963730.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="C:\Users\inigo\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/inigo/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047/jre/bin/server;C:/Users/inigo/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047/jre/bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Python27\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\dotnet\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\nodejs\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%SYSTEMROOT%\System32\OpenSSH\;C:\Users\inigo\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\inigo\AppData\Local\Programs\Python\Python37\;C:\Users\inigo\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\inigo\AppData\Local\Programs\Python\Python310\;C:\Users\inigo\AppData\Local\Microsoft\WindowsApps;D:\Program_Files\GNAT\2018\bin;C:\Program Files\JetBrains\PyCharm 2020.2.3\bin;;D:\Program_Files\PyCharm Community Edition 2019.2.3\bin;;C:\Python27\;D:\Program_Files\Intellij\IntelliJ IDEA Community Edition 2020.2.2\bin;;C:\Program Files\JetBrains\IntelliJ IDEA 2022.2.3\bin;;C:\Program Files\JetBrains\CLion 2020.3.2\bin;;C:\Program Files\JetBrains\WebStorm 2022.2.3\bin;;C:\Program Files\JetBrains\PhpStorm 2021.2.3\bin;;C:\Users\inigo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\inigo\AppData\Roaming\npm;C:\Users\inigo\Desktop\sonar-scanner-4.7.0.2747-windows\bin;;C:\WINDOWS\System32;;."/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="61.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\inigo"/>
+    <property name="user.timezone" value="Europe/Madrid"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="17"/>
+    <property name="user.name" value="inigo"/>
+    <property name="java.class.path" value="C:\Users\inigo\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.400.20230826-0755\jars\plexus-classworlds-2.7.0.jar"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B -Dstyle.color=always clean org.jacoco:jacoco-maven-plugin:prepare-agent org.jacoco:jacoco-maven-plugin:report install sonar:sonar"/>
+    <property name="java.home" value="C:\Users\inigo\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="17.0.8.1"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="maven.home" value="C:\Users\inigo\Downloads\betsDanel\bets\bets\EMBEDDED"/>
+    <property name="style.color" value="always"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2023-08-24"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.vendor.version" value="Temurin-17.0.8.1+1"/>
+    <property name="m2e.build.project.data.socket.port" value="58793"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase name="test3" classname="CreateQuestionBLBMTest" time="0.57">
+    <error message="Cannot invoke &quot;domain.Event.getEventDate()&quot; because &quot;event&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke "domain.Event.getEventDate()" because "event" is null
+	at CreateQuestionBLBMTest.test3(CreateQuestionBLBMTest.java:109)
+</error>
+    <system-out><![CDATA[Creating BLFacadeImplementation instance with DataAccess parameter
+Read from config.xml: 	 businessLogicLocal=true	 databaseLocal=true	 dataBaseOpenMode=initialize
+]]></system-out>
+    <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo.
+	at org.jacoco.agent.rt.internal_f3994fa.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:541)
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1017)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1095)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:621)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:637)
+	at java.base/java.lang.Class.forName(Class.java:545)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:859)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1084)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1309)
+	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1393)
+	at java.base/sun.util.cldr.CLDRLocaleProviderAdapter.lambda$new$0(CLDRLocaleProviderAdapter.java:86)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at java.base/sun.util.cldr.CLDRLocaleProviderAdapter.<init>(CLDRLocaleProviderAdapter.java:85)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.forType(LocaleProviderAdapter.java:188)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.findAdapter(LocaleProviderAdapter.java:287)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.getAdapter(LocaleProviderAdapter.java:258)
+	at java.base/java.util.Calendar.createCalendar(Calendar.java:1688)
+	at java.base/java.util.Calendar.getInstance(Calendar.java:1656)
+	at java.base/java.text.SimpleDateFormat.initializeCalendar(SimpleDateFormat.java:680)
+	at java.base/java.text.SimpleDateFormat.<init>(SimpleDateFormat.java:624)
+	at java.base/java.text.SimpleDateFormat.<init>(SimpleDateFormat.java:603)
+	at CreateQuestionBLBMTest.test3(CreateQuestionBLBMTest.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:73)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:46)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:180)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:41)
+	at org.junit.runners.ParentRunner$1.evaluate(ParentRunner.java:173)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:220)
+	at org.mockito.internal.runners.JUnit45AndHigherRunnerImpl.run(JUnit45AndHigherRunnerImpl.java:37)
+	at org.mockito.runners.MockitoJUnitRunner.run(MockitoJUnitRunner.java:62)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
+Caused by: java.io.IOException: Error while instrumenting sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo.
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrumentError(Instrumenter.java:160)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:110)
+	at org.jacoco.agent.rt.internal_f3994fa.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 60 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 61
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:196)
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:177)
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:163)
+	at org.jacoco.agent.rt.internal_f3994fa.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:76)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:108)
+	... 61 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/util/resources/provider/LocaleDataProvider.
+	at org.jacoco.agent.rt.internal_f3994fa.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:541)
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1017)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1095)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:621)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:637)
+	at java.base/java.lang.Class.forName(Class.java:545)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:859)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1084)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1309)
+	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1393)
+	at java.base/sun.util.resources.Bundles$2.run(Bundles.java:267)
+	at java.base/sun.util.resources.Bundles$2.run(Bundles.java:265)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:264)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:201)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:160)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:145)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:106)
+	at java.base/sun.util.resources.LocaleData$1.run(LocaleData.java:186)
+	at java.base/sun.util.resources.LocaleData$1.run(LocaleData.java:183)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:183)
+	at java.base/sun.util.resources.LocaleData.getDateFormatData(LocaleData.java:146)
+	at java.base/java.text.DateFormatSymbols.initializeData(DateFormatSymbols.java:745)
+	at java.base/java.text.DateFormatSymbols.<init>(DateFormatSymbols.java:151)
+	at java.base/sun.util.locale.provider.DateFormatSymbolsProviderImpl.getInstance(DateFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DateFormatSymbols.getProviderInstance(DateFormatSymbols.java:370)
+	at java.base/java.text.DateFormatSymbols.getInstanceRef(DateFormatSymbols.java:360)
+	at java.base/java.text.SimpleDateFormat.<init>(SimpleDateFormat.java:626)
+	at java.base/java.text.SimpleDateFormat.<init>(SimpleDateFormat.java:603)
+	at CreateQuestionBLBMTest.test3(CreateQuestionBLBMTest.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:73)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:46)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:180)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:41)
+	at org.junit.runners.ParentRunner$1.evaluate(ParentRunner.java:173)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:220)
+	at org.mockito.internal.runners.JUnit45AndHigherRunnerImpl.run(JUnit45AndHigherRunnerImpl.java:37)
+	at org.mockito.runners.MockitoJUnitRunner.run(MockitoJUnitRunner.java:62)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
+Caused by: java.io.IOException: Error while instrumenting sun/util/resources/provider/LocaleDataProvider.
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrumentError(Instrumenter.java:160)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:110)
+	at org.jacoco.agent.rt.internal_f3994fa.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 64 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 61
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:196)
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:177)
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:163)
+	at org.jacoco.agent.rt.internal_f3994fa.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:76)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:108)
+	... 65 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_es.
+	at org.jacoco.agent.rt.internal_f3994fa.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:541)
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1017)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1095)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:621)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:637)
+	at java.base/java.lang.Class.forName(Class.java:545)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.loadResourceBundle(LocaleDataProvider.java:54)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.getBundle(LocaleDataProvider.java:40)
+	at java.base/sun.util.resources.Bundles$2.run(Bundles.java:270)
+	at java.base/sun.util.resources.Bundles$2.run(Bundles.java:265)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:264)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:201)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:160)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:145)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:106)
+	at java.base/sun.util.resources.LocaleData$1.run(LocaleData.java:186)
+	at java.base/sun.util.resources.LocaleData$1.run(LocaleData.java:183)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:183)
+	at java.base/sun.util.resources.LocaleData.getDateFormatData(LocaleData.java:146)
+	at java.base/java.text.DateFormatSymbols.initializeData(DateFormatSymbols.java:745)
+	at java.base/java.text.DateFormatSymbols.<init>(DateFormatSymbols.java:151)
+	at java.base/sun.util.locale.provider.DateFormatSymbolsProviderImpl.getInstance(DateFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DateFormatSymbols.getProviderInstance(DateFormatSymbols.java:370)
+	at java.base/java.text.DateFormatSymbols.getInstanceRef(DateFormatSymbols.java:360)
+	at java.base/java.text.SimpleDateFormat.<init>(SimpleDateFormat.java:626)
+	at java.base/java.text.SimpleDateFormat.<init>(SimpleDateFormat.java:603)
+	at CreateQuestionBLBMTest.test3(CreateQuestionBLBMTest.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:73)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:46)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:180)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:41)
+	at org.junit.runners.ParentRunner$1.evaluate(ParentRunner.java:173)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:220)
+	at org.mockito.internal.runners.JUnit45AndHigherRunnerImpl.run(JUnit45AndHigherRunnerImpl.java:37)
+	at org.mockito.runners.MockitoJUnitRunner.run(MockitoJUnitRunner.java:62)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
+Caused by: java.io.IOException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_es.
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrumentError(Instrumenter.java:160)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:110)
+	at org.jacoco.agent.rt.internal_f3994fa.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 62 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 61
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:196)
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:177)
+	at org.jacoco.agent.rt.internal_f3994fa.asm.ClassReader.<init>(ClassReader.java:163)
+	at org.jacoco.agent.rt.internal_f3994fa.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:76)
+	at org.jacoco.agent.rt.internal_f3994fa.core.instr.Instrumenter.instrument(Instrumenter.java:108)
+	... 63 more
+]]></system-err>
+  </testcase>
+  <testcase name="test7" classname="CreateQuestionBLBMTest" time="0.016">
+    <error message="Can&apos;t find bundle for base name Etiquetas, locale es_ES" type="java.util.MissingResourceException">java.util.MissingResourceException: Can't find bundle for base name Etiquetas, locale es_ES
+	at CreateQuestionBLBMTest.test7(CreateQuestionBLBMTest.java:149)
+</error>
+    <system-out><![CDATA[Creating BLFacadeImplementation instance with DataAccess parameter
+]]></system-out>
+  </testcase>
+  <testcase name="test1" classname="CreateQuestionBLBMTest" time="0.003">
+    <error message="Can&apos;t find bundle for base name Etiquetas, locale es_ES" type="java.util.MissingResourceException">java.util.MissingResourceException: Can't find bundle for base name Etiquetas, locale es_ES
+	at CreateQuestionBLBMTest.test1(CreateQuestionBLBMTest.java:60)
+</error>
+    <system-out><![CDATA[Creating BLFacadeImplementation instance with DataAccess parameter
+]]></system-out>
+  </testcase>
+</testsuite>

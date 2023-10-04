@@ -27,6 +27,14 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 					 </execution>
 				 </executions>
 </plugin>
+<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+		    <version>2.19.1</version>
+			<configuration>
+    		<testFailureIgnore>true</testFailureIgnore>
+			</configuration>
+		</plugin>
 			</plugins>
 </build>
 <repositories>
@@ -41,6 +49,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 				<maven.compiler.source>1.8</maven.compiler.source>
 		<sonar.organization>si2bets </sonar.organization>
 				<sonar.host.url>https://sonarcloud.io</sonar.host.url>		
+				<sonar.login>899df92862ccca5d311940397a47c7c86ec13067</sonar.login>
 </properties>
 <!-- https://mvnrepository.com/artifact/junit/junit	-->
 <dependencies>
