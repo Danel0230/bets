@@ -984,7 +984,7 @@ public void open(boolean initializeMode){
 				resultB = false; 
 			}
 		}
-		if(resultB == false) {
+		if(!resultB) {
 			return false;
 		}else if(new Date().compareTo(event.getEventDate())<0) {
 			TypedQuery<Quote> Qquery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1", Quote.class);
