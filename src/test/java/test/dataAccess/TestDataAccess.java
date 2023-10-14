@@ -82,6 +82,22 @@ public class TestDataAccess {
 				}
 				return ev;
 	    }
+	public Event addEventWithSport(String desc, Date d, String sport) {
+			System.out.println(">> DataAccessTest: addEvent");
+			Event ev= null;
+				db.getTransaction().begin();
+				
+				try {
+					ev=new Event(desc,d,null, null);
+					spo= new Sport(sport);
+					ev.setSport(spo);
+					db.persist(ev);
+					db.getTransaction().commit();
+				}catch (Exception e){
+					e.printStackTrace();
+				}
+				return ev;
+		}
 		public boolean existQuestion(Event ev,Question q) {
 			System.out.println(">> DataAccessTest: existQuestion");
 			Event e = db.find(Event.class, ev.getEventNumber());
