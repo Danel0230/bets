@@ -92,6 +92,22 @@ public class TestDataAccess {
 				}
 				return ev;
 	    }
+	public Event addEventWithSport(String desc, Date d, String sport) {
+			System.out.println(">> DataAccessTest: addEvent");
+			Event ev= null;
+				db.getTransaction().begin();
+				
+				try {
+					ev=new Event(desc,d,null, null);
+					spo= new Sport(sport);
+					ev.setSport(spo);
+					db.persist(ev);
+					db.getTransaction().commit();
+				}catch (Exception e){
+					e.printStackTrace();
+				}
+				return ev;
+		}
 		
 		public Quote test12hasieraketa(String desc, Date d, String question, float qty,double balio,String forecast) {
 			System.out.println(">> DataAccessTest: addEvent");
