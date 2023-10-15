@@ -1,7 +1,9 @@
 package test.dataAccess;
-//Probazko iruzkina
+import java.util.Calendar;
+import dataAccess.DataAccess;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Vector;
 
@@ -10,12 +12,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
+import configuration.UtilDate;
 import domain.ApustuAnitza;
 import domain.Apustua;
 import domain.Event;
 import domain.Question;
 import domain.Quote;
 import domain.Registered;
+import domain.Sport;
 import domain.Team;
 import domain.Transaction;
 
@@ -402,6 +406,27 @@ public class TestDataAccess {
 			} else 
 			return false;
 			
+		}
+		
+		public void createUser(String username, String password) {
+			db.getTransaction().begin();
+			Registered reg1 = new Registered(username, password, 1111);	
+			db.getTransaction().commit();
+			db.close();
+		}
+		
+		public void removeUser(String pId) throws Exception {
+			try {
+				db.getTransaction().begin();
+				db.remove(db.find(Registered.class, pId));				
+			}
+			catch(Exception e) {
+				throw new Exception(e);
+			}
+			finally {
+				db.getTransaction().commit();
+				db.close();
+			}
 		}
 }
 
