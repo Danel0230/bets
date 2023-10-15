@@ -69,7 +69,7 @@ public class GertaerakSortuDABTest {
 		assertTrue(q==null);
 		
 		
-	   } catch  {
+	   } catch()  {
 		// if the program goes to this point fail  
 		fail();
 		} 
@@ -92,7 +92,7 @@ public class GertaerakSortuDABTest {
 		assertTrue(q==null);
 		
 		
-	   } catch  {
+	   } catch()  {
 		// if the program goes to this point fail  
 		fail();
 		} 
