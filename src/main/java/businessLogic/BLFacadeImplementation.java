@@ -380,5 +380,10 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return team;
 	}
+
+	public Boolean jarraitu(JarraituParameter jarraituParameter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

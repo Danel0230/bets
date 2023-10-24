@@ -1127,4 +1127,9 @@ public void open(boolean initializeMode){
 		return query.getResultList();
 		
 	}
+
+	public Boolean jarraitu1(JarraituParameter parameterObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
