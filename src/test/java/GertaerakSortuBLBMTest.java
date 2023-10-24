@@ -24,7 +24,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GertaerakBLBMTest {
+public class GertaerakSortuBLBMTest {
      DataAccess dataAccess=Mockito.mock(DataAccess.class);
      Sport mockedSport=Mockito.mock(Sport.class);
 	
