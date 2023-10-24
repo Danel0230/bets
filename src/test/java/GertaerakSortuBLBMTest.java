@@ -12,7 +12,7 @@ import businessLogic.BLFacade;
 import businessLogic.BLFacadeImplementation;
 import dataAccess.DataAccess;
 import domain.Event;
-import domain.Question;
+import domain.Sport;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 
@@ -36,50 +36,9 @@ public class GertaerakBLBMTest {
 	
 	@Test
 	public void test1() {
-			try {
-				//define paramaters
-				String spo="proba galdera";
-				String desc= "Alaves-Deportivo";
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-				Date oneDate=null;;
-				try {
-					oneDate = sdf.parse("05/10/2022");
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
-				
-				//configure Mock
-				Mockito.doReturn(false).when(dataAccess).gertaeraksortu(Mockito.any(String.class),Mockito.any(Date.class), Mockito.any(Sport.class));
-
-				
-
-				//invoke System Under Test (sut) 
-				Question q=sut.gertaeraksortu(desc,oneDate,mockedSport);
-				
-				//verify the results			
-				ArgumentCaptor<String> descCaptor = ArgumentCaptor.forClass(String.class);
-				ArgumentCaptor<Date> dateCaptor = ArgumentCaptor.forClass(Date.class);
-				ArgumentCaptor<Sport> sportCaptor = ArgumentCaptor.forClass(Sport.class);
-				
-				Mockito.verify(dataAccess,Mockito.times(1)).gertaerakSortu(descCaptor.capture(),dateCaptor.capture(), sportCaptor.capture());
-
-				
-				assertEquals(StringCaptor.getValue(),desc);
-				assertEquals(dateCaptor.getValue(),oneDate);
-				assertEquals(sport.getValue(),mockedSport);
-
-				} catch (EventFinished e) {
-				    fail();
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			   }
-	@Test
-	public void test3() {
-		try {
 			//define paramaters
-			String desc= "Alaves-Deportivo"
+			String spo="proba galdera";
+			String desc= "Alaves-Deportivo";
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate=null;;
 			try {
@@ -90,16 +49,48 @@ public class GertaerakBLBMTest {
 			}	
 			
 			//configure Mock
-			Mockito.doReturn(null).when(dataAccess).gertaeraksortu(Mockito.any(String.class),Mockito.any(Date.class), Mockito.any(Sport.class));
+			Mockito.doReturn(false).when(dataAccess).gertaerakSortu(Mockito.any(String.class),Mockito.any(Date.class), Mockito.any(String.class));
+
+			
+
+			
+			//verify the results			
+			ArgumentCaptor<String> descCaptor = ArgumentCaptor.forClass(String.class);
+			ArgumentCaptor<Date> dateCaptor = ArgumentCaptor.forClass(Date.class);
+			ArgumentCaptor<String> sportCaptor = ArgumentCaptor.forClass(String.class);
+			
+			Mockito.verify(dataAccess,Mockito.times(1)).gertaerakSortu(descCaptor.capture(),dateCaptor.capture(), sportCaptor.capture());
+
+			
+			assertEquals(descCaptor.getValue(),desc);
+			assertEquals(dateCaptor.getValue(),oneDate);
+			assertEquals(sportCaptor.getValue(),mockedSport);
+			   }
+	@Test
+	public void test3() {
+		try {
+			//define paramaters
+			String desc= "Alaves-Deportivo";
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure Mock
+			Mockito.doReturn(null).when(dataAccess).gertaerakSortu(Mockito.any(String.class),Mockito.any(Date.class), Mockito.any(String.class));
 			
 
 			//invoke System Under Test (sut) 
-			boolean b =sut.gertaeraksortu(desc,oneDate,null);
+			boolean b =sut.gertaerakSortu(desc,oneDate,null);
 			
 			//verify the results
-			Mockito.verify(dataAccess,Mockito.times(1)).gertaeraksortu(Mockito.any(String.class),Mockito.any(Date.class), Mockito.any(Sport.class));
+			Mockito.verify(dataAccess,Mockito.times(1)).gertaerakSortu(Mockito.any(String.class),Mockito.any(Date.class), Mockito.any(String.class));
 			
-			assertTrue(b==null);
+			assertTrue(b==true);
 			
 			fail();
 			} catch (EventFinished e) {
@@ -112,14 +103,15 @@ public class GertaerakBLBMTest {
 	public void test7() {
 		try {
 			//define paramaters
-			String desc= "Alaves-Deportivo"
+			String desc= "Alaves-Deportivo";
+			String spo= "Futbol";
 			
 			//configure Mock
-			Mockito.doReturn(null).when(dataAccess).gertaeraksortu(Mockito.any(String.class),Mockito.any(Date.class), Mockito.any(Sport.class));			
+			Mockito.doReturn(null).when(dataAccess).gertaerakSortu(Mockito.any(String.class),Mockito.any(Date.class), Mockito.any(String.class));			
 
 			//invoke System Under Test (sut) 
 			
-			sut.gertaeraksortu(desc,null,mockedSport);
+			sut.gertaerakSortu(desc,null,spo);
 			
 			//if the program continues fail
 		    fail();
