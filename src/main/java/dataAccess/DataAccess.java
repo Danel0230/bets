@@ -999,13 +999,7 @@ public void open(boolean initializeMode){
 	}
 
 			
-		}
-		db.getTransaction().begin();
-		db.remove(event);
-		db.getTransaction().commit();
-		return true; 
-	}
-	
+		
 	public String saldoaBistaratu(Registered u) {
 		Registered reg = (Registered)db.find(Registered.class, u.getUsername());
 		return reg.getDirukop().toString();
