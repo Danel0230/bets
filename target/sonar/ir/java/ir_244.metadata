@@ -1,2 +1,0 @@
-domain.TeamRenderer#instance-init#
-gui.MainGUI#getBusinessLogic()LbusinessLogic/BLFacade;

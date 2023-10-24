@@ -55,7 +55,7 @@ public class EmaitzakIpini2DAB {
 	}
 	
 	@Test
-	//irabaziak eta galerak
+	//irabaziak eta galerak batera
 	public void test2() {
 		Quote q= null;
 		Quote q1= null;
