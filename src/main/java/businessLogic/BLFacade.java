@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import dataAccess.JarraituParameter;
 import domain.ApustuAnitza;
 import domain.Apustua;
 import domain.Event;
@@ -129,4 +130,6 @@ public interface BLFacade  {
 	@WebMethod public Team findTeam(Registered u);
 	
 	@WebMethod public Sport findSport(Event q);
+
+	Boolean jarraitu(JarraituParameter jarraituParameter);
 }
