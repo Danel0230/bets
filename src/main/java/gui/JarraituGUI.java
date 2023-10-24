@@ -18,6 +18,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import businessLogic.BLFacade;
+import dataAccess.JarraituParameter;
 import domain.Registered;
 import javax.swing.JTextField;
 
@@ -71,7 +72,7 @@ public class JarraituGUI extends JFrame{
 							lblError.setVisible(true);
 							lblError.setText(ResourceBundle.getBundle("Etiquetas").getString("JarraituError2") + ((Registered)list.getSelectedValue()).getUsername());
 						}else {
-							b = businessLogic.jarraitu((Registered)user, (Registered)list.getSelectedValue(), zenb);
+							b = businessLogic.jarraitu(new JarraituParameter((Registered)user, (Registered)list.getSelectedValue(), zenb));
 							if(b) {
 								lblError.setVisible(true);
 								lblError.setText(ResourceBundle.getBundle("Etiquetas").getString("JarraituCorrect") + ((Registered)list.getSelectedValue()).getUsername());

@@ -11,6 +11,7 @@ import javax.jws.WebService;
 
 import configuration.ConfigXML;
 import dataAccess.DataAccess;
+import dataAccess.JarraituParameter;
 import domain.ApustuAnitza;
 import domain.Apustua;
 import domain.Event;
@@ -287,7 +288,7 @@ public class BLFacadeImplementation  implements BLFacade {
 	@WebMethod
 	public boolean jarraitu(Registered jabea, Registered jarraitua, Double limit) {
 		dbManager.open(false);
-		Boolean b=dbManager.jarraitu(jabea, jarraitua, limit);
+		Boolean b=dbManager.jarraitu(new JarraituParameter(jabea, jarraitua, limit));
 		dbManager.close();
 		return b;
 	}
