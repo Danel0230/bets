@@ -368,17 +368,18 @@ public class DataAccess  {
 			
 			
 			
-			Transaction t1 = new Transaction(reg1, apA1.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t3 = new Transaction(reg2, apA4.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t4 = new Transaction(reg3, apA5.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t5 = new Transaction(reg4, apA3.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t6 = new Transaction(reg4, apA6.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t7 = new Transaction(reg1, apA7.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t8 = new Transaction(reg1, apA8.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t9 = new Transaction(reg2, apA9.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t10 = new Transaction(reg2, apA10.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t11 = new Transaction(reg3, apA11.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t12 = new Transaction(reg3, apA12.getBalioa(), new Date(), "ApustuaEgin");
+			String Apustu = "ApustuaEgin";
+			Transaction t1 = new Transaction(reg1, apA1.getBalioa(), new Date(), Apustu);
+			Transaction t3 = new Transaction(reg2, apA4.getBalioa(), new Date(), Apustu);
+			Transaction t4 = new Transaction(reg3, apA5.getBalioa(), new Date(), Apustu);
+			Transaction t5 = new Transaction(reg4, apA3.getBalioa(), new Date(), Apustu);
+			Transaction t6 = new Transaction(reg4, apA6.getBalioa(), new Date(), Apustu);
+			Transaction t7 = new Transaction(reg1, apA7.getBalioa(), new Date(), Apustu);
+			Transaction t8 = new Transaction(reg1, apA8.getBalioa(), new Date(), Apustu);
+			Transaction t9 = new Transaction(reg2, apA9.getBalioa(), new Date(), Apustu);
+			Transaction t10 = new Transaction(reg2, apA10.getBalioa(), new Date(), Apustu);
+			Transaction t11 = new Transaction(reg3, apA11.getBalioa(), new Date(), Apustu);
+			Transaction t12 = new Transaction(reg3, apA12.getBalioa(), new Date(), Apustu);
 			
 			reg1.addTransaction(t1);
 			reg2.addTransaction(t3);
@@ -830,55 +831,72 @@ public void open(boolean initializeMode){
 		Boolean b;
 		if(user.getDirukop()>=balioa) {
 			db.getTransaction().begin();
-			ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);
-			db.persist(apustuAnitza);
-			for(Quote quo: quote) {
-				Quote kuote = db.find(Quote.class, quo.getQuoteNumber());
-				Apustua ap = new Apustua(apustuAnitza, kuote);
-				db.persist(ap);
-				apustuAnitza.addApustua(ap);
-				kuote.addApustua(ap);
-			}
+			ApustuAnitza apustuAnitza = ApustuaGehitu(quote, balioa, user);
 			db.getTransaction().commit();
 			db.getTransaction().begin();
 			if(apustuBikoitzaGalarazi==-1) {
 				apustuBikoitzaGalarazi=apustuAnitza.getApustuAnitzaNumber();
 			}
 			apustuAnitza.setApustuKopia(apustuBikoitzaGalarazi);
-			user.updateDiruKontua(-balioa);
-			Transaction t = new Transaction(user, balioa, new Date(), "ApustuaEgin"); 
-			user.addApustuAnitza(apustuAnitza);
-			for(Apustua a: apustuAnitza.getApustuak()) {
-				Apustua apu = db.find(Apustua.class, a.getApostuaNumber());
-				Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());
-				Sport spo =q.getQuestion().getEvent().getSport();
-				spo.setApustuKantitatea(spo.getApustuKantitatea()+1);
-				
-			}
-			user.addTransaction(t);
-			db.persist(t);
+			UpdateApustuAnitza(balioa, user, apustuAnitza);
 			db.getTransaction().commit();
-			for(Jarraitzailea reg:user.getJarraitzaileLista()) {
-				Jarraitzailea erab=db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());
-				b=true;
-				for(ApustuAnitza apu: erab.getNork().getApustuAnitzak()) {
-					if(apu.getApustuKopia()==apustuAnitza.getApustuKopia()) {
-						b=false;
-					}
-				}
-				if(b) {
-					if(erab.getNork().getDiruLimitea()<balioa) {
-						this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
-					}else{
-						this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);
-					}
-				}
-			}
+			JarraitzaileakApustuEgin(quote, new JarraitzaileakApustuEginParameter(balioa, apustuBikoitzaGalarazi, apustuAnitza), user);
 			return true; 
 		}else{
 			return false; 
 		}
-		
+	}
+
+	private void UpdateApustuAnitza(Double balioa, Registered user, ApustuAnitza apustuAnitza) {
+		user.updateDiruKontua(-balioa);
+		Transaction t = new Transaction(user, balioa, new Date(), "ApustuaEgin"); 
+		user.addApustuAnitza(apustuAnitza);
+		UpdateSport(apustuAnitza);
+		user.addTransaction(t);
+		db.persist(t);
+	}
+
+	private void JarraitzaileakApustuEgin(Vector<Quote> quote, JarraitzaileakApustuEginParameter ApustuInfo, Registered user) {
+		Boolean b;
+		for(Jarraitzailea reg:user.getJarraitzaileLista()) {
+			Jarraitzailea erab=db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());
+			b=true;
+			for(ApustuAnitza apu: erab.getNork().getApustuAnitzak()) {
+				if(apu.getApustuKopia()==ApustuInfo.apustuAnitza.getApustuKopia()) {
+					b=false;
+				}
+			}
+			if(b) {
+				if(erab.getNork().getDiruLimitea()<ApustuInfo.balioa) {
+					this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), ApustuInfo.apustuBikoitzaGalarazi);
+				}else{
+					this.ApustuaEgin(erab.getNork(), quote, ApustuInfo.balioa, ApustuInfo.apustuBikoitzaGalarazi);
+				}
+			}
+		}
+	}
+
+	private void UpdateSport(ApustuAnitza apustuAnitza) {
+		for(Apustua a: apustuAnitza.getApustuak()) {
+			Apustua apu = db.find(Apustua.class, a.getApostuaNumber());
+			Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());
+			Sport spo =q.getQuestion().getEvent().getSport();
+			spo.setApustuKantitatea(spo.getApustuKantitatea()+1);
+			
+		}
+	}
+
+	private ApustuAnitza ApustuaGehitu(Vector<Quote> quote, Double balioa, Registered user) {
+		ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);
+		db.persist(apustuAnitza);
+		for(Quote quo: quote) {
+			Quote kuote = db.find(Quote.class, quo.getQuoteNumber());
+			Apustua ap = new Apustua(apustuAnitza, kuote);
+			db.persist(ap);
+			apustuAnitza.addApustua(ap);
+			kuote.addApustua(ap);
+		}
+		return apustuAnitza;
 	}
 	
 	public void apustuaEzabatu(Registered user1, ApustuAnitza ap) {
