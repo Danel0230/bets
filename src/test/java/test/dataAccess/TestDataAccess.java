@@ -95,6 +95,7 @@ public class TestDataAccess {
 	public Event addEventWithSport(String desc, Date d, String sport) {
 			System.out.println(">> DataAccessTest: addEvent");
 			Event ev= null;
+			Sport spo= null;
 				db.getTransaction().begin();
 				
 				try {

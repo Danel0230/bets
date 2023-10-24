@@ -452,40 +452,6 @@ public class DataAccess  {
 			team31.addEvent(ev27);
 			team32.addEvent(ev27);
 			
-			
-			db.persist(team1);
-			db.persist(team2);
-			db.persist(team3);
-			db.persist(team4);
-			db.persist(team5);
-			db.persist(team6);
-			db.persist(team7);
-			db.persist(team8);
-			db.persist(team9);
-			db.persist(team10);
-			db.persist(team11);
-			db.persist(team12);
-			db.persist(team13);
-			db.persist(team14);
-			db.persist(team15);
-			db.persist(team16);
-			db.persist(team17);
-			db.persist(team18);
-			db.persist(team19);
-			db.persist(team20);
-			db.persist(team21);
-			db.persist(team22);
-			db.persist(team23);
-			db.persist(team24);
-			db.persist(team25);
-			db.persist(team26);
-			db.persist(team27);
-			db.persist(team28);
-			db.persist(team29);
-			db.persist(team30);
-			db.persist(team31);
-			db.persist(team32);
-			
 			db.persist(apA1);
 			db.persist(apA3);
 			db.persist(apA4);
@@ -498,49 +464,7 @@ public class DataAccess  {
 			db.persist(apA11);
 			db.persist(apA12);
 			db.persist(apA13);
-			
-			db.persist(q1);
-			db.persist(q2);
-			db.persist(q3);
-			db.persist(q4);
-			db.persist(q5);
-			db.persist(q6);
-			db.persist(q7);
-			db.persist(q8);
-			db.persist(q9);
-			db.persist(q10);
-			db.persist(q11);
-			
-			
-	        
-			db.persist(ev1);
-			db.persist(ev2);
-			db.persist(ev3);
-			db.persist(ev4);
-			db.persist(ev5);
-			db.persist(ev6);
-			db.persist(ev7);
-			db.persist(ev8);
-			db.persist(ev9);
-			db.persist(ev10);
-			db.persist(ev11);
-			db.persist(ev12);
-			db.persist(ev13);
-			db.persist(ev14);
-			db.persist(ev15);
-			db.persist(ev16);
-			db.persist(ev17);
-			db.persist(ev18);
-			db.persist(ev19);
-			db.persist(ev20);		
-			db.persist(ev21);
-			db.persist(ev22);
-			db.persist(ev23);
-			db.persist(ev24);
-			db.persist(ev25);
-			db.persist(ev26);
-			db.persist(ev27);
-			
+		
 			db.persist(sp1);
 			db.persist(sp2);
 			db.persist(sp3);
@@ -591,6 +515,23 @@ public class DataAccess  {
 			db.persist(t11);
 			db.persist(t12);
 			
+			Team[] gordetzekoTeams = {
+					team1, team2, team3, team4, team5, team6, team7, team8, team9, team10,
+					team11, team12, team13, team14, team15, team16, team17, team18, team19, team20,
+					team21, team22, team23, team24, team25, team26, team27, team28, team29, team30,
+					team31, team32
+			};
+			Event[] gordetzekoEvents = {
+					ev1, ev2, ev3, ev4, ev5, ev6, ev7, ev8, ev9, ev10,
+					ev11, ev12, ev13, ev14, ev15, ev16, ev17, ev18, ev19, ev20,
+					ev21, ev22, ev23, ev24, ev25, ev26, ev27
+			};
+			
+			Question[] gordetzekoQuestions = {
+				    q1, q2, q3, q4, q5, q6, q7, q8, q9, q10,
+				    q11};
+			
+			this.dbGorde(gordetzekoEvents, gordetzekoQuestions, gordetzekoTeams);
 			
 			
 			db.getTransaction().commit();
@@ -605,6 +546,12 @@ public class DataAccess  {
 		catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	private void dbGorde(Event[] pGordetzekoEvents, Question[] pGordetzekoQuestions, Team[] pGordetzekoTeams) {
+		for(Question q:pGordetzekoQuestions) db.persist(q);
+		for(Event ev:pGordetzekoEvents) db.persist(ev);
+		for(Team t:pGordetzekoTeams) db.persist(t);
 	}
 	
 	/**
@@ -970,6 +917,18 @@ public void open(boolean initializeMode){
 		Question que = q.getQuestion(); 
 		Question question = db.find(Question.class, que); 
 		question.setResult(result);
+		this.apustuakMarkatu(question);
+		db.getTransaction().commit();
+		for(Apustua a : listApustuak) {
+			db.getTransaction().begin();
+			Boolean bool=a.getApustuAnitza().irabazitaMarkatu();
+			db.getTransaction().commit();
+			if(bool) {
+				this.ApustuaIrabazi(a.getApustuAnitza());
+			}
+		}
+	}
+	private void apustuakMarkatu(Question question) {
 		for(Quote quo: question.getQuotes()) {
 			for(Apustua apu: quo.getApustuak()) {
 				
@@ -979,15 +938,6 @@ public void open(boolean initializeMode){
 				}else {
 					apu.setEgoera("irabazita");
 				}
-			}
-		}
-		db.getTransaction().commit();
-		for(Apustua a : listApustuak) {
-			db.getTransaction().begin();
-			Boolean bool=a.getApustuAnitza().irabazitaMarkatu();
-			db.getTransaction().commit();
-			if(bool) {
-				this.ApustuaIrabazi(a.getApustuAnitza());
 			}
 		}
 	}
@@ -1069,43 +1019,66 @@ public void open(boolean initializeMode){
 	
 	
 	public boolean gertaerakKopiatu(Event e, Date date) {
-		Boolean b=false;
-		Event gertaera = db.find(Event.class, e.getEventNumber());
-		db.getTransaction().begin();
-		
-		
-		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev WHERE ev.getDescription()=?1 and ev.getEventDate()=?2",Event.class);   
-		query.setParameter(1,gertaera.getDescription());
-		query.setParameter(2, date);
-		if(query.getResultList().isEmpty()) {
-			b=true;
-			String[] taldeak = gertaera.getDescription().split("-");
-			Team lokala = new Team(taldeak[0]);
-			Team kanpokoa = new Team(taldeak[1]);
-			Event gertKopiatu = new Event(gertaera.getDescription(), date, lokala, kanpokoa);
-			gertKopiatu.setSport(gertaera.getSport());
-			gertaera.getSport().addEvent(gertKopiatu);
-			db.persist(gertKopiatu);
-				for(Question q : gertaera.getQuestions()) {
-					Question que= new Question(q.getQuestion(), q.getBetMinimum(), gertKopiatu);
-					gertKopiatu.listaraGehitu(que);
-					Question galdera = db.find(Question.class, q.getQuestionNumber());
-					db.persist(que);
-					for(Quote k: galdera.getQuotes()) {
-						Quote kuo= new Quote(k.getQuote(), k.getForecast(), que);
-						que.listaraGehitu(kuo);
-						db.persist(kuo);
-					}
-				}
-		}
-		db.getTransaction().commit();
-		return b;
+	    boolean b = false;
+	    Event gertaera = db.find(Event.class, e.getEventNumber());
+	    db.getTransaction().begin();
+
+	    TypedQuery<Event> query = createEventQuery(gertaera.getDescription(), date);
+
+	    if (query.getResultList().isEmpty()) {
+	        b = true;
+	        copyEvent(gertaera, date);
+	    }
+
+	    db.getTransaction().commit();
+	    return b;
 	}
-	
-	public boolean jarraitu(Registered jabea, Registered jarraitua, Double limit) {
+
+	private TypedQuery<Event> createEventQuery(String description, Date date) {
+	    TypedQuery<Event> query = db.createQuery(
+	            "SELECT ev FROM Event ev WHERE ev.getDescription()=?1 and ev.getEventDate()=?2", Event.class);
+	    query.setParameter(1, description);
+	    query.setParameter(2, date);
+	    return query;
+	}
+
+	private void copyEvent(Event gertaera, Date date) {
+	    String[] taldeak = gertaera.getDescription().split("-");
+	    Team lokala = new Team(taldeak[0]);
+	    Team kanpokoa = new Team(taldeak[1]);
+
+	    Event gertKopiatu = new Event(gertaera.getDescription(), date, lokala, kanpokoa);
+	    gertKopiatu.setSport(gertaera.getSport());
+	    gertaera.getSport().addEvent(gertKopiatu);
+	    db.persist(gertKopiatu);
+
+	    copyQuestions(gertaera, gertKopiatu);
+	}
+
+	private void copyQuestions(Event gertaera, Event gertKopiatu) {
+	    for (Question q : gertaera.getQuestions()) {
+	        Question que = new Question(q.getQuestion(), q.getBetMinimum(), gertKopiatu);
+	        gertKopiatu.listaraGehitu(que);
+
+	        Question galdera = db.find(Question.class, q.getQuestionNumber());
+	        db.persist(que);
+
+	        copyQuotes(galdera, que);
+	    }
+	}
+
+	private void copyQuotes(Question galdera, Question que) {
+	    for (Quote k : galdera.getQuotes()) {
+	        Quote kuo = new Quote(k.getQuote(), k.getForecast(), que);
+	        que.listaraGehitu(kuo);
+	        db.persist(kuo);
+	    }
+	}
+
+	public boolean jarraitu(JarraituParameter parameterObject) {
 		Boolean b=false;
-		Registered jarraitu = (Registered) db.find(Registered.class, jarraitua.getUsername());
-		Registered harpideduna = (Registered) db.find(Registered.class, jabea.getUsername());
+		Registered jarraitu = (Registered) db.find(Registered.class, parameterObject.jarraitua.getUsername());
+		Registered harpideduna = (Registered) db.find(Registered.class, parameterObject.jabea.getUsername());
 		if(!harpideduna.getJarraitutakoLista().contains(jarraitu)) {
 			db.getTransaction().begin();
 			Jarraitzailea jar = new Jarraitzailea(harpideduna, jarraitu);
@@ -1113,7 +1086,7 @@ public void open(boolean initializeMode){
 			jarraitu.addJarraitzailea(jar);
 			b=true;
 			db.persist(jar);
-			harpideduna.setDiruLimitea(limit);
+			harpideduna.setDiruLimitea(parameterObject.limit);
 			db.getTransaction().commit();
 		}
 		return b;
@@ -1171,5 +1144,10 @@ public void open(boolean initializeMode){
 		query.setParameter(2, t.getIzena());
 		return query.getResultList();
 		
+	}
+
+	public Boolean jarraitu1(JarraituParameter parameterObject) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

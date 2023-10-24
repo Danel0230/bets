@@ -9,7 +9,6 @@ import java.util.Date;
 import org.junit.Test;
 
 import configuration.ConfigXML;
-import dataAccess.DataAccessInterface;
 import dataAccess.DataAccess;
 import domain.Event;
 import domain.Question;
@@ -26,10 +25,10 @@ public class GertaerakSortuDABTest {
 	 //additional operations needed to execute the test 
 	 static TestDataAccess testDA=new TestDataAccess();
 
-	private Event ev;
+	private Event ev;   
 	
 	
-	@test
+	@Test
 	public void test1(){// Kirola datu basean, data horretarako gertaerak datu basean
 		try {
 			String description= "Alaves-Deportivo";
@@ -48,7 +47,7 @@ public class GertaerakSortuDABTest {
 			ev = testDA.addEventWithSport(description,oneDate,spo);
 			testDA.close();
 			
-			boolean emaitza= sut.gertaeraksortu(description, oneDate,spo);
+			boolean emaitza= sut.gertaerakSortu(description, oneDate,spo);
 			assertEquals(false, emaitza);
 			
 		}finally{
@@ -58,23 +57,23 @@ public class GertaerakSortuDABTest {
 	         System.out.println("Finally "+b);          
 	        }
 		}
-	@test
+	@Test
 	public void test2() {//data null da
 		try {
 		String description= "Alaves-Deportivo";
 		String spo= "futbol";
+
+		boolean q= sut.gertaerakSortu(description, null,spo);
 		
-		boolean emaitza= sut.gertaeraksortu(description, null,spo);
-		
-		assertTrue(q==null);
+		assertTrue(q==false);
 		
 		
-	   } catch()  {
+	   } finally  {
 		// if the program goes to this point fail  
 		fail();
 		} 
 	}
-	@test
+	@Test
 	public void test3() {//sport null da
 		try {
 		String description= "Alaves-Deportivo";
@@ -87,12 +86,12 @@ public class GertaerakSortuDABTest {
 			e.printStackTrace();
 		}	
 		
-		boolean emaitza= sut.gertaeraksortu(description, oneDate,null);
+		boolean q= sut.gertaerakSortu(description, oneDate,null);
 		
-		assertTrue(q==null);
+		assertTrue(q==false);
 		
 		
-	   } catch()  {
+	   } finally  {
 		// if the program goes to this point fail  
 		fail();
 		} 
