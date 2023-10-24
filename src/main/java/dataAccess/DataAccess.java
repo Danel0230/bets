@@ -536,10 +536,11 @@ public class DataAccess  {
 			
 			db.getTransaction().commit();
 			
-			this.DiruaSartu(reg1, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg2, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg3, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg4, 50.0, new Date(), "DiruaSartu");
+			this.DiruaSartu(new DiruaSartuParameter(reg1, new Date(), "DiruaSartu"), 50.0);
+			this.DiruaSartu(new DiruaSartuParameter(reg2, new Date(), "DiruaSartu"), 50.0);
+			this.DiruaSartu(new DiruaSartuParameter(reg3, new Date(), "DiruaSartu"), 50.0);
+			this.DiruaSartu(new DiruaSartuParameter(reg4, new Date(), "DiruaSartu"), 50.0);
+			
 			
 			System.out.println("Db initialized");
 		}
@@ -689,19 +690,23 @@ public void open(boolean initializeMode){
 				}
 			}
 			if(b) {
-				String[] taldeak = description.split("-");
-				Team lokala = new Team(taldeak[0]);
-				Team kanpokoa = new Team(taldeak[1]);
-				Event e = new Event(description, eventDate, lokala, kanpokoa);
-				e.setSport(spo);
-				spo.addEvent(e);
-				db.persist(e);
+				gertaerakGehitu(description, eventDate, spo);
 			}
 		}else {
 			return false;
 		}
 		db.getTransaction().commit();
 		return b;
+	}
+
+	public void gertaerakGehitu(String description, Date eventDate, Sport spo) {
+		String[] taldeak = description.split("-");
+		Team lokala = new Team(taldeak[0]);
+		Team kanpokoa = new Team(taldeak[1]);
+		Event e = new Event(description, eventDate, lokala, kanpokoa);
+		e.setSport(spo);
+		spo.addEvent(e);
+		db.persist(e);
 	}
 	
 	public Quote storeQuote(String forecast, Double Quote, Question question) throws QuoteAlreadyExist {
@@ -762,16 +767,17 @@ public void open(boolean initializeMode){
 		return Qquery.getResultList();
 	}
 	
-	public void DiruaSartu(Registered u, Double dirua, Date data, String mota) {
-		Registered user = (Registered) db.find(Registered.class, u.getUsername()); 
+	public void DiruaSartu(DiruaSartuParameter parameterObject, Double dirua) {
+		Registered user = (Registered) db.find(Registered.class, parameterObject.u.getUsername()); 
 		db.getTransaction().begin();
-		Transaction t = new Transaction(user, dirua, data, mota); 
+		Transaction t = new Transaction(user, dirua, parameterObject.data, parameterObject.mota); 
 		System.out.println(t.getMota());
 		user.addTransaction(t);
 		user.updateDiruKontua(dirua);
 		db.persist(t);
 		db.getTransaction().commit();
 	}
+
 	
 	public boolean ApustuaEgin(Registered u, Vector<Quote> quote, Double balioa, Integer apustuBikoitzaGalarazi) {
 		Registered user = (Registered) db.find(Registered.class, u.getUsername());
@@ -947,11 +953,7 @@ public void open(boolean initializeMode){
 		boolean resultB = true; 
 		List<Question> listQ = event.getQuestions(); 
 		
-		for(Question q : listQ) {
-			if(q.getResult() == null) {
-				resultB = false; 
-			}
-		}
+		resultB = galderaNull(listQ);
 		if(!resultB) {
 			return false;
 		}else if(new Date().compareTo(event.getEventDate())<0) {
@@ -977,6 +979,24 @@ public void open(boolean initializeMode){
 					db.getTransaction().commit();
 				}
 			}
+			
+		}
+		db.getTransaction().begin();
+		db.remove(event);
+		db.getTransaction().commit();
+		return true; 
+	}
+
+	public boolean galderaNull(List<Question> listQ) {
+		for(Question q : listQ) {
+			if(q.getResult() == null) {
+				 return  false; 
+			}
+			
+		}
+		return true;
+	}
+
 			
 		}
 		db.getTransaction().begin();
