@@ -536,10 +536,11 @@ public class DataAccess  {
 			
 			db.getTransaction().commit();
 			
-			this.DiruaSartu(new DiruaSartuParameter(reg1, new Date(), "DiruaSartu"), 50.0);
-			this.DiruaSartu(new DiruaSartuParameter(reg2, new Date(), "DiruaSartu"), 50.0);
-			this.DiruaSartu(new DiruaSartuParameter(reg3, new Date(), "DiruaSartu"), 50.0);
-			this.DiruaSartu(new DiruaSartuParameter(reg4, new Date(), "DiruaSartu"), 50.0);
+			String Dirua = "DiruaSartu";
+			this.DiruaSartu(new DiruaSartuParameter(reg1, new Date(), Dirua), 50.0);
+			this.DiruaSartu(new DiruaSartuParameter(reg2, new Date(), Dirua), 50.0);
+			this.DiruaSartu(new DiruaSartuParameter(reg3, new Date(), Dirua), 50.0);
+			this.DiruaSartu(new DiruaSartuParameter(reg4, new Date(), Dirua), 50.0);
 			
 			
 			System.out.println("Db initialized");
