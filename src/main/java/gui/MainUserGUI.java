@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
 import businessLogic.BLFacade;
@@ -31,6 +32,8 @@ public class MainUserGUI extends JFrame {
 	private JFrame thisw ; 
 	private JPanel jContentPane = null;
 	private JButton jButtonQueryQueries = null;
+	private JButton jButtonMarieUrrieta = null;
+
 
     private static BLFacade appFacadeInterface;
 	
@@ -101,6 +104,7 @@ public class MainUserGUI extends JFrame {
 			jContentPane.setLayout(null);
 			jContentPane.add(getLblNewLabel());
 			jContentPane.add(getBoton3());
+			jContentPane.add(getBoton4());
 			jContentPane.add(getPanel());
 			
 			loginButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Login"));
@@ -149,11 +153,33 @@ public class MainUserGUI extends JFrame {
 		return jButtonQueryQueries;
 	}
 	
+	private JButton getBoton4() {
+		if (jButtonMarieUrrieta == null) {
+			jButtonMarieUrrieta = new JButton();
+			jButtonMarieUrrieta.setBounds(0, 25, 481, 38);
+			jButtonMarieUrrieta.setText("Table of MariaUrreta");
+			jButtonMarieUrrieta.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					BLFacade bl= getBusinessLogic();
+					try {
+					Registered user= bl.getRegistered("MariaUrrieta");
+					JTable taula= new JTable(new UserAdapter(user));
+					taula.setVisible(true);
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+		return jButtonMarieUrrieta;
+	}
+	
+	
 
 	private JLabel getLblNewLabel() {
 		if (jLabelSelectOption == null) {
 			jLabelSelectOption = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("SelectOption"));
-			jLabelSelectOption.setBounds(0, 0, 481, 63);
+			jLabelSelectOption.setBounds(0, -20, 481, 63);
 			jLabelSelectOption.setFont(new Font("Tahoma", Font.BOLD, 13));
 			jLabelSelectOption.setForeground(Color.BLACK);
 			jLabelSelectOption.setHorizontalAlignment(SwingConstants.CENTER);

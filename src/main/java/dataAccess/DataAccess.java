@@ -216,7 +216,7 @@ public class DataAccess  {
 			Question q11;
 			
 			Registered ad1=new Registered("admin", "123", 1234,true);
-			Registered reg1 =new Registered("registered", "123", 1234);
+			Registered reg1 =new Registered("MariaUrrieta", "123", 1234);
 			Registered reg2 = new Registered("andrea", "123", 1111);
 			Registered reg3 = new Registered("markel", "123", 1111);
 			Registered reg4 = new Registered("mikel", "123", 1111);
@@ -599,6 +599,12 @@ public class DataAccess  {
 		   res.add(ev);
 		  }
 	 	return res;
+	}
+	public Registered getRegistered(String name) {
+		System.out.println(">> DataAccess: getRegisetred");
+		Registered user;
+		user= (Registered) db.find(Registered.class, name);
+		return user;
 	}
 	
 	/**

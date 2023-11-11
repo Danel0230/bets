@@ -32,10 +32,12 @@ public class ApplicationLauncher {
 		
 		MainGUI a=new MainGUI();
 		a.setVisible(false);
+		MainGUI.setBussinessLogic(BLF);
 		
 		MainUserGUI b = new MainUserGUI(); 
+		b.setBussinessLogic(BLF);
 		b.setVisible(true);
-
+		
 
 		
 		//a.pack();

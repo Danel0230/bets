@@ -52,6 +52,8 @@ public interface BLFacade  {
 	 */
 	@WebMethod public ExtendedIterator<Event> getEvents(Date date);
 	
+    @WebMethod public Registered getRegistered(String name);
+	
 	/**
 	 * This method retrieves from the database the dates a month for which there are events
 	 * 

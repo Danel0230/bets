@@ -106,6 +106,13 @@ public class BLFacadeImplementation  implements BLFacade {
 		ExtendedIterator<Event> it = new ExtendedIteratorImpl<Event>(events);
 		return it;
 	}
+    @WebMethod
+    public Registered getRegistered(String name) {
+    	dbManager.open(false);
+    	Registered user= dbManager.getRegistered(name);
+    	dbManager.close();
+    	return user;
+    }
 
     
 	/**

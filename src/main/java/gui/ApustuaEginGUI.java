@@ -29,6 +29,7 @@ import javax.swing.SwingConstants;
 import com.toedter.calendar.JCalendar;
 
 import businessLogic.BLFacade;
+import businessLogic.ExtendedIterator;
 import configuration.UtilDate;
 import domain.Event;
 import domain.Question;
@@ -391,7 +392,7 @@ public class ApustuaEginGUI extends JFrame{
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						ExtendedIterator<Event> events = facade.getEvents(firstDay);
 						
 						if (events.isEmpty()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
