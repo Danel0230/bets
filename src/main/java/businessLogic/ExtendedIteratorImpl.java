@@ -12,7 +12,7 @@ public class ExtendedIteratorImpl<T> implements ExtendedIterator<T> {
 
     public T previous() {
         if (hasPrevious()) {
-            return elements.get(--currentIndex);
+            return elements.get(currentIndex--);
         }
         return null;
     }
