@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
@@ -164,7 +165,17 @@ public class MainUserGUI extends JFrame {
 					try {
 					Registered user= bl.getRegistered("MariaUrrieta");
 					JTable taula= new JTable(new UserAdapter(user));
+					//System.out.println(taula.getColumnCount());
+					//System.out.println(taula.getRowCount());
+					//System.out.println(taula.toString());
+					//System.out.println(taula.getValueAt(1,1));
+					taula.validate();
+					//JTable taulaproba1= new JTable();
+					//taulaproba1.setVisible(true);
+					//JTable taulaproba= new JTable(2,2);
+					//taulaproba.setVisible(true);
 					taula.setVisible(true);
+					//System.out.println(taula.isVisible());
 					}catch (Exception e) {
 						e.printStackTrace();
 					}

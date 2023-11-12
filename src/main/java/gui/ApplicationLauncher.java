@@ -23,7 +23,7 @@ public class ApplicationLauncher {
 		Locale.setDefault(new Locale(c.getLocale()));
 		System.out.println("Locale: "+Locale.getDefault());
 		MainGUI a=new MainGUI();
-		a.setVisible(true);
+		a.setVisible(false);
 		try {
 			BLFacade BLFacadeInterface;
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
@@ -41,6 +41,10 @@ public class ApplicationLauncher {
 			}
 			
 			MainGUI.setBussinessLogic(BLFacadeInterface);
+			MainUserGUI b= new MainUserGUI();
+			b.setVisible(true);
+			MainUserGUI.setBussinessLogic(BLFacadeInterface);
+			
 		}catch (Exception e) {
 			a.jLabelSelectOption.setText("Error: "+e.toString());
 			a.jLabelSelectOption.setForeground(Color.RED);

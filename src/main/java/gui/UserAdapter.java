@@ -1,6 +1,5 @@
 package gui;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JTable;
@@ -17,17 +16,27 @@ import domain.Registered;
 
 public class UserAdapter extends AbstractTableModel{
 
-	private static BLFacade blFacade;
-	private ArrayList<String> colnames;
-	private ArrayList<ArrayList<String>> taula;
+	private Vector<String> colnames;
+	private Vector<Vector<String>> taula;
+	
+	private void hasieratu() {
+		colnames = new Vector<String>();
+		colnames.add("Event");
+		colnames.add("Question");
+		colnames.add("Event Date");
+		colnames.add("Bet (€)");
+		taula= new Vector<Vector<String>>();
+		for (int i=0;i<4;i++) {
+			taula.add(new Vector<String>());
+		}
+	}
 
 	public int getRowCount() {
 		return taula.size();
 		}
 
 	public int getColumnCount() {
-		taula.get(0).size();
-		return 0;
+		return taula.get(0).size();
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
@@ -44,20 +53,17 @@ public class UserAdapter extends AbstractTableModel{
 	public String getColumnName(int columnIndeex) {
 		return colnames.get(columnIndeex);
 	}
-	
+		
 	public UserAdapter(Registered user) {
-		colnames.add("Event");
-		colnames.add("Question");
-		colnames.add("Event Date");
-		colnames.add("Bet (€)");
-			for(ApustuAnitza apuan: user.getApustuAnitzak()) {
-				Vector<Apustua> apu=apuan.getApustuak();
-				for (Apustua ap: apu) {
-					Question que=ap.getKuota().getQuestion();
-					Event ev= que.getEvent();
-					this.addBet(ev.getDescription(),que.getQuestion(),apuan.getData().toString(),apuan.getBalioa().toString());
-				}
+		this.hasieratu();
+		for(ApustuAnitza apuan: user.getApustuAnitzak()) {
+			Vector<Apustua> apu=apuan.getApustuak();
+			for (Apustua ap: apu) {
+				Question que=ap.getKuota().getQuestion();
+				Event ev= que.getEvent();
+				this.addBet(ev.getDescription(),que.getQuestion(),apuan.getData().toString(),apuan.getBalioa().toString());
 			}
+		}
 	}
 
 }

@@ -601,7 +601,6 @@ public class DataAccess  {
 	 	return res;
 	}
 	public Registered getRegistered(String name) {
-		System.out.println(">> DataAccess: getRegisetred");
 		Registered user;
 		user= (Registered) db.find(Registered.class, name);
 		return user;
