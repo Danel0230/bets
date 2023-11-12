@@ -18,31 +18,34 @@ public class ApplicationLauncher {
 	
 	
 	public static void main(String[] args) {
-
 		ConfigXML c=ConfigXML.getInstance();
-		//isgsiu
-	
 		System.out.println(c.getLocale());
-		
 		Locale.setDefault(new Locale(c.getLocale()));
-		
 		System.out.println("Locale: "+Locale.getDefault());
-		
-		BLFacadeInterface BLF= BLFacadeFactory.createBLfacade(c.isBusinessLogicLocal());
-		
 		MainGUI a=new MainGUI();
-		a.setVisible(false);
-		MainGUI.setBussinessLogic(BLF);
-		
-		MainUserGUI b = new MainUserGUI(); 
-		b.setBussinessLogic(BLF);
-		b.setVisible(true);
-		
+		a.setVisible(true);
+		try {
+			BLFacade BLFacadeInterface;
+			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			if (c.isBusinessLogicLocal()) {
+					DataAccess da= new DataAccess(c.getDataBaseOpenMode().equals("initialize"));
+					BLFacadeInterface=new BLFacadeImplementation(da);
+			}
+			else { //If remote
+				String serviceName= "http://"+c.getBusinessLogicNode() +":"+ c.getBusinessLogicPort()+ "/ws/"+c.getBusinessLogicName()+"?wsdl";
 
-		
-		//a.pack();
-
-
+				URL url = new URL(serviceName);
+				QName qname = new QName("http://businessLogic/", "BLFacadeImplementationService");
+				Service service = Service.create(url, qname);
+				BLFacadeInterface = service.getPort(BLFacade.class);
+			}
+			
+			MainGUI.setBussinessLogic(BLFacadeInterface);
+		}catch (Exception e) {
+			a.jLabelSelectOption.setText("Error: "+e.toString());
+			a.jLabelSelectOption.setForeground(Color.RED);
+			System.out.println("Error in ApplicationLauncher: "+e.toString());
+		}
 	}
 
 }
