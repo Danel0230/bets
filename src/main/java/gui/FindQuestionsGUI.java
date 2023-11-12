@@ -152,10 +152,12 @@ public class FindQuestionsGUI extends JFrame {
 						BLFacade facade=MainGUI.getBusinessLogic();
 
 						ExtendedIterator<Event> events=facade.getEvents(firstDay);
-
-						if (events.isEmpty() ) jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")+ ": "+dateformat1.format(calendarAct.getTime()));
+						events.goFirst();
+						if (!events.hasNext()) jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")+ ": "+dateformat1.format(calendarAct.getTime()));
 						else jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("Events")+ ": "+dateformat1.format(calendarAct.getTime()));
-						for (domain.Event ev:events){
+						events.goFirst();
+						while (events.hasNext()){
+							domain.Event ev = events.next();
 							Vector<Object> row = new Vector<Object>();
 
 							System.out.println("Events "+ev);

@@ -249,8 +249,8 @@ public class EmaitzakIpiniGUI extends JFrame{
 						BLFacade facade = MainGUI.getBusinessLogic();
 
 						ExtendedIterator<Event> events = facade.getEvents(firstDay);
-						
-						if (events.isEmpty()) {
+						events.goFirst();
+						if (!events.hasNext()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
 									+ ": " + dateformat1.format(calendarAct.getTime()));
 							System.out.println("no events"); 
@@ -262,7 +262,9 @@ public class EmaitzakIpiniGUI extends JFrame{
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events) {
+						events.goFirst();
+						while(events.hasNext()) {
+							domain.Event ev = events.next();
 							modelEvents.addElement(ev);
 						}
 						jComboBoxEvents.repaint();

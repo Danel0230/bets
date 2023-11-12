@@ -118,8 +118,11 @@ public class GertaeraEzabatuGUI extends JFrame{
 				boolean b = businessLogic.gertaeraEzabatu(event); 
 				
 				modelEvents.removeAllElements();
-				for(Event a : businessLogic.getEvents(event.getEventDate())){
-					modelEvents.addElement(a); 
+				ExtendedIterator<Event> events = businessLogic.getEvents(event.getEventDate());
+				events.goFirst();
+				while(events.hasNext()) {
+					domain.Event ev = events.next();
+					modelEvents.addElement(ev);
 				}
 				
 				if(b==false) {
@@ -185,8 +188,8 @@ public class GertaeraEzabatuGUI extends JFrame{
 						BLFacade facade = MainGUI.getBusinessLogic();
 
 						ExtendedIterator<Event> events = facade.getEvents(firstDay);
-
-						if (events.isEmpty())
+						events.goFirst();
+						if (!events.hasNext())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
 									+ ": " + dateformat1.format(calendarAct.getTime()));
 						else
@@ -195,11 +198,15 @@ public class GertaeraEzabatuGUI extends JFrame{
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events)
+						events.goFirst();
+						while(events.hasNext()) {
+							domain.Event ev = events.next();
 							modelEvents.addElement(ev);
+						}
 						jComboBoxEvents.repaint();
 
-						if (events.size() == 0)
+						events.goFirst();
+						if (!events.hasNext())
 							jButtonEzabatu.setEnabled(false);
 						else
 							jButtonEzabatu.setEnabled(true);

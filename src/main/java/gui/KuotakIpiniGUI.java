@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import com.toedter.calendar.JCalendar;
 
 import businessLogic.BLFacade;
+import businessLogic.ExtendedIterator;
 import configuration.UtilDate;
 import domain.Event;
 import domain.Question;
@@ -259,9 +260,9 @@ public class KuotakIpiniGUI extends JFrame{
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
-						
-						if (events.isEmpty()) {
+						ExtendedIterator<domain.Event> events = facade.getEvents(firstDay);
+						events.goFirst();
+						if (!events.hasNext()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
 									+ ": " + dateformat1.format(calendarAct.getTime()));
 							System.out.println("no events"); 
@@ -273,12 +274,15 @@ public class KuotakIpiniGUI extends JFrame{
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events) {
+						events.goFirst();
+						while(events.hasNext()) {
+							domain.Event ev = events.next();
 							modelEvents.addElement(ev);
 						}
 						jComboBoxEvents.repaint();
 						
-						if (events.size() == 0)
+						events.goFirst();
+						if (!events.hasNext())
 							jButtonCreate.setEnabled(false);
 						else
 							jButtonCreate.setEnabled(true);

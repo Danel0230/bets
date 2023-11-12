@@ -394,7 +394,7 @@ public class ApustuaEginGUI extends JFrame{
 
 						ExtendedIterator<Event> events = facade.getEvents(firstDay);
 						
-						if (events.isEmpty()) {
+						if (!events.hasNext()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
 									+ ": " + dateformat1.format(calendarAct.getTime()));
 							System.out.println("no events"); 
@@ -406,12 +406,15 @@ public class ApustuaEginGUI extends JFrame{
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events) {
+						events.goFirst();
+						while(events.hasNext()) {
+							domain.Event ev = events.next();
 							modelEvents.addElement(ev);
 						}
 						jComboBoxEvents.repaint();
 						
-						if (events.size() == 0) {
+						events.goFirst();
+						if (!events.hasNext()) {
 							btnApustuaGehitu.setEnabled(false);
 						}else {
 							

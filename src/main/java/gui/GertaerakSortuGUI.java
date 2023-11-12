@@ -27,6 +27,7 @@ import javax.swing.SwingConstants;
 import com.toedter.calendar.JCalendar;
 
 import businessLogic.BLFacade;
+import businessLogic.ExtendedIterator;
 import configuration.UtilDate;
 import domain.Event;
 import exceptions.EventFinished;
@@ -210,9 +211,9 @@ public class GertaerakSortuGUI extends JFrame{
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
-
-						if (events.isEmpty())
+						ExtendedIterator<domain.Event> events = facade.getEvents(firstDay);
+						events.goFirst();
+						if (!events.hasNext())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
 									+ ": " + dateformat1.format(calendarAct.getTime()));
 						else
@@ -221,8 +222,11 @@ public class GertaerakSortuGUI extends JFrame{
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events)
+						events.goFirst();
+						while(events.hasNext()) {
+							domain.Event ev = events.next();
 							modelEvents.addElement(ev);
+						}
 							jComboBoxEvents.repaint();
 
 					} catch (Exception e1) {
